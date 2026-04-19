@@ -1,0 +1,841 @@
+{
+  "header": {
+    "home": "홈",
+    "channel": "채널",
+    "token": "토큰",
+    "redemption": "교환",
+    "topup": "충전",
+    "user": "사용자",
+    "dashboard": "대시보드",
+    "log": "로그",
+    "setting": "설정",
+    "about": "정보",
+    "chat": "채팅",
+    "login": "로그인",
+    "logout": "로그아웃",
+    "register": "회원가입"
+  },
+  "language": {
+    "ko": "한국어",
+    "en": "영어",
+    "zh": "중국어"
+  },
+  "topup": {
+    "title": "충전 센터",
+    "get_code": {
+      "title": "교환 코드 받기",
+      "current_quota": "현재 사용 가능 잔액",
+      "button": "지금 받기"
+    },
+    "redeem_code": {
+      "title": "코드 교환",
+      "placeholder": "교환 코드를 입력하세요",
+      "paste": "붙여넣기",
+      "paste_error": "클립보드에 접근할 수 없습니다. 수동으로 붙여넣어주세요",
+      "submit": "지금 교환",
+      "submitting": "교환 중...",
+      "empty_code": "교환 코드를 입력해주세요!",
+      "success": "충전 성공!",
+      "request_failed": "요청 실패",
+      "no_link": "관리자가 충전 링크를 설정하지 않았습니다!"
+    }
+  },
+  "channel": {
+    "title": "채널 관리",
+    "search": "ID, 이름 및 키로 채널 검색...",
+    "balance_notice": "OpenAI 채널은 더 이상 키를 통한 잔액 조회를 지원하지 않으므로 잔액이 0으로 표시됩니다. 지원하는 채널 유형의 경우 잔액을 클릭하여 새로고침하세요.",
+    "test_notice": "채널 테스트는 채팅 모델만 지원하며, gpt-3.5-turbo를 선호합니다. 사용 불가능한 경우 설정된 목록의 첫 번째 모델을 사용합니다.",
+    "detail_notice": "아래의 세부 정보 버튼을 클릭하여 잔액을 표시하고 추가 테스트 모델을 설정하세요.",
+    "table": {
+      "id": "ID",
+      "name": "이름",
+      "group": "그룹",
+      "type": "유형",
+      "status": "상태",
+      "response_time": "응답 시간",
+      "balance": "잔액",
+      "priority": "우선순위",
+      "test_model": "테스트 모델",
+      "actions": "작업",
+      "no_name": "없음",
+      "status_enabled": "활성화됨",
+      "status_disabled": "비활성화됨",
+      "status_auto_disabled": "비활성화됨",
+      "status_disabled_tip": "이 채널은 수동으로 비활성화되었습니다",
+      "status_auto_disabled_tip": "이 채널은 자동으로 비활성화되었습니다",
+      "status_unknown": "알 수 없는 상태",
+      "not_tested": "테스트되지 않음",
+      "priority_tip": "채널 선택 우선순위, 높을수록 선호됨",
+      "select_test_model": "테스트 모델을 선택하세요",
+      "click_to_update": "클릭하여 업데이트",
+      "balance_not_supported": "-"
+    },
+    "buttons": {
+      "test": "테스트",
+      "delete": "삭제",
+      "confirm_delete": "채널 삭제",
+      "enable": "활성화",
+      "disable": "비활성화",
+      "edit": "편집",
+      "add": "새 채널 추가",
+      "test_all": "모든 채널 테스트",
+      "test_disabled": "비활성화된 채널 테스트",
+      "delete_disabled": "비활성화된 채널 삭제",
+      "confirm_delete_disabled": "삭제 확인",
+      "refresh": "새로고침",
+      "show_detail": "세부 정보",
+      "hide_detail": "세부 정보 숨기기"
+    },
+    "messages": {
+      "test_success": "채널 {{name}} 테스트 성공, 모델 {{model}}, 시간 {{time}}초, 출력: {{message}}",
+      "test_all_started": "채널 테스트가 성공적으로 시작되었습니다. 페이지를 새로고침하여 결과를 확인하세요.",
+      "delete_disabled_success": "모든 비활성화된 채널을 삭제했습니다. 총: {{count}}",
+      "balance_update_success": "채널 {{name}} 잔액이 성공적으로 업데이트되었습니다!",
+      "all_balance_updated": "모든 활성화된 채널의 잔액이 업데이트되었습니다!",
+      "operation_success": "작업이 완료되었습니다!"
+    },
+    "edit": {
+      "title_edit": "채널 정보 업데이트",
+      "title_create": "새 채널 생성",
+      "type": "유형",
+      "name": "이름",
+      "name_placeholder": "이름을 입력하세요",
+      "group": "그룹",
+      "group_placeholder": "이 채널을 사용할 수 있는 그룹을 선택하세요",
+      "group_addition": "시스템 설정에서 그룹 배수를 편집하여 새 그룹을 추가하세요:",
+      "models": "모델",
+      "models_placeholder": "이 채널이 지원하는 모델을 선택하세요",
+      "model_mapping": "모델 매핑",
+      "model_mapping_placeholder": "선택 사항입니다. 요청 본문의 모델 이름을 수정하는 데 사용됩니다. 키는 요청 모델 이름이고 값은 대상 모델 이름인 JSON 문자열입니다",
+      "system_prompt": "시스템 프롬프트",
+      "system_prompt_placeholder": "선택 사항입니다. 시스템 프롬프트를 강제 설정하는 데 사용됩니다. 사용자 정의 모델 및 모델 매핑과 함께 사용하세요. 먼저 위에 고유한 사용자 정의 모델 이름을 생성한 후 기본 지원 모델로 매핑하세요",
+      "proxy_url": "프록시",
+      "proxy_url_placeholder": "이는 선택 사항이며 프록시를 통한 API 호출에 사용됩니다. 프록시 URL을 입력하세요. 형식: https://domain.com",
+      "base_url": "기본 URL",
+      "base_url_placeholder": "OpenAPI SDK에 필요한 기본 URL",
+      "key": "키",
+      "key_placeholder": "키를 입력하세요",
+      "batch": "일괄 생성",
+      "batch_placeholder": "키를 입력하세요. 줄 단위로 입력하세요",
+      "buttons": {
+        "cancel": "취소",
+        "submit": "제출",
+        "fill_models": "관련 모델 채우기",
+        "fill_all": "모든 모델 채우기",
+        "clear": "모든 모델 제거",
+        "add_custom": "추가",
+        "custom_placeholder": "사용자 정의 모델 이름 입력"
+      },
+      "messages": {
+        "name_required": "채널 이름과 키를 입력하세요!",
+        "models_required": "최소 하나의 모델을 선택하세요!",
+        "model_mapping_invalid": "모델 매핑은 유효한 JSON 형식이어야 합니다!",
+        "update_success": "채널이 성공적으로 업데이트되었습니다!",
+        "create_success": "채널이 성공적으로 생성되었습니다!"
+      },
+      "spark_version": "모델 버전",
+      "spark_version_placeholder": "API URL의 Spark 모델 버전을 입력하세요. 예: v2.1",
+      "knowledge_id": "지식 기반 ID",
+      "knowledge_id_placeholder": "지식 기반 ID를 입력하세요. 예: 123456",
+      "plugin_param": "플러그인 매개변수",
+      "plugin_param_placeholder": "플러그인 매개변수를 입력하세요 (X-DashScope-Plugin 헤더 값)",
+      "coze_notice": "Coze의 경우 모델 이름은 Bot ID입니다. `bot-` 접두사를 추가할 수 있습니다. 예: `bot-123456`",
+      "douban_notice": "Douban의 경우",
+      "douban_notice_link": "모델 추론 페이지",
+      "douban_notice_2": "로 이동하여 추론 엔드포인트를 생성하고 엔드포인트 이름을 모델 이름으로 사용하세요. 예: `ep-20240608051426-tkxvl`",
+      "aws_region_placeholder": "지역. 예: us-west-2",
+      "aws_ak_placeholder": "AWS IAM 액세스 키",
+      "aws_sk_placeholder": "AWS IAM 비밀 키",
+      "vertex_region_placeholder": "Vertex AI 지역. 예: us-east5",
+      "vertex_project_id": "Vertex AI 프로젝트 ID",
+      "vertex_project_id_placeholder": "Vertex AI 프로젝트 ID",
+      "vertex_credentials": "Google Cloud 애플리케이션 기본 자격증명 JSON",
+      "vertex_credentials_placeholder": "Google Cloud 애플리케이션 기본 자격증명 JSON",
+      "user_id": "사용자 ID",
+      "user_id_placeholder": "이 키를 생성한 사용자의 ID",
+      "key_prompts": {
+        "default": "이 채널의 인증 키를 입력하세요",
+        "zhipu": "형식으로 입력하세요: APIKey|SecretKey",
+        "spark": "형식으로 입력하세요: APPID|APISecret|APIKey",
+        "fastgpt": "형식으로 입력하세요: APIKey-AppId. 예: fastgpt-0sp2gtvfdgyi4k30jwlgwf1i-64f335d84283f05518e9e041",
+        "tencent": "형식으로 입력하세요: AppId|SecretId|SecretKey"
+      }
+    }
+  },
+  "token": {
+    "title": "토큰 관리",
+    "search": "토큰을 이름으로 검색...",
+    "table": {
+      "name": "이름",
+      "status": "상태",
+      "used_quota": "사용된 잔액",
+      "remain_quota": "남은 잔액",
+      "created_time": "생성 시간",
+      "expired_time": "만료 시간",
+      "actions": "작업",
+      "no_name": "없음",
+      "never_expire": "영구",
+      "unlimited": "무제한",
+      "status_enabled": "활성화됨",
+      "status_disabled": "비활성화됨",
+      "status_expired": "만료됨",
+      "status_depleted": "소진됨",
+      "status_unknown": "알 수 없는 상태"
+    },
+    "buttons": {
+      "copy": "복사",
+      "chat": "채팅",
+      "delete": "삭제",
+      "confirm_delete": "토큰 삭제",
+      "enable": "활성화",
+      "disable": "비활성화",
+      "edit": "편집",
+      "add": "새 토큰 추가",
+      "refresh": "새로고침"
+    },
+    "edit": {
+      "title_edit": "토큰 정보 업데이트",
+      "title_create": "새 토큰 생성",
+      "name": "이름",
+      "name_placeholder": "이름을 입력하세요",
+      "models": "모델 범위",
+      "models_placeholder": "허용된 모델을 선택하세요. 비워두면 제한 없음",
+      "ip_limit": "IP 제한",
+      "ip_limit_placeholder": "허용된 서브넷을 입력하세요. 예: 192.168.0.0/24, 여러 서브넷은 쉼표로 구분",
+      "expire_time": "만료 시간",
+      "expire_time_placeholder": "yyyy-MM-dd HH:mm:ss 형식으로 만료 시간을 입력하세요. -1은 제한 없음",
+      "quota_notice": "참고: 토큰 잔액은 토큰 자체의 최대 사용량만 제한하며, 실제 사용량은 계정의 남은 잔액에 따라 결정됩니다.",
+      "quota": "잔액",
+      "quota_placeholder": "잔액을 입력하세요",
+      "buttons": {
+        "never_expire": "영구",
+        "expire_1_month": "1개월 후 만료",
+        "expire_1_day": "1일 후 만료",
+        "expire_1_hour": "1시간 후 만료",
+        "expire_1_minute": "1분 후 만료",
+        "unlimited_quota": "무제한 잔액 설정",
+        "cancel_unlimited": "무제한 잔액 취소",
+        "submit": "제출",
+        "cancel": "취소"
+      },
+      "messages": {
+        "update_success": "토큰이 성공적으로 업데이트되었습니다!",
+        "create_success": "토큰이 성공적으로 생성되었습니다. 목록 페이지에서 복사하세요!",
+        "expire_time_invalid": "유효하지 않은 만료 시간 형식!"
+      }
+    },
+    "copy_options": {
+      "raw": "원본 토큰 복사",
+      "ama": "AMA 링크 복사",
+      "opencat": "OpenCat 링크 복사",
+      "next": "NextChat 링크 복사",
+      "lobe": "LobeChat 링크 복사"
+    },
+    "messages": {
+      "copy_success": "클립보드에 복사됨!",
+      "copy_failed": "클립보드에 복사할 수 없습니다. 수동으로 복사하세요. 토큰이 검색창에 입력되었습니다.",
+      "operation_success": "작업이 완료되었습니다!"
+    },
+    "sort": {
+      "placeholder": "정렬 기준",
+      "default": "기본 순서",
+      "by_remain": "남은 잔액으로 정렬",
+      "by_used": "사용된 잔액으로 정렬"
+    }
+  },
+  "common": {
+    "quota": {
+      "display": "동등가: ${{amount}}",
+      "display_short": "${{amount}}",
+      "unit": "$"
+    }
+  },
+  "redemption": {
+    "title": "교환 관리",
+    "search": "ID 및 이름으로 교환 코드 검색...",
+    "table": {
+      "id": "ID",
+      "name": "이름",
+      "status": "상태",
+      "quota": "잔액",
+      "created_time": "생성 시간",
+      "redeemed_time": "교환 시간",
+      "actions": "작업",
+      "no_name": "없음",
+      "not_redeemed": "미사용"
+    },
+    "buttons": {
+      "copy": "복사",
+      "delete": "삭제",
+      "confirm_delete": "삭제 확인",
+      "enable": "활성화",
+      "disable": "비활성화",
+      "edit": "편집",
+      "add": "새 코드 추가",
+      "refresh": "새로고침"
+    },
+    "status": {
+      "unused": "미사용",
+      "disabled": "비활성화됨",
+      "used": "사용됨",
+      "unknown": "알 수 없음"
+    },
+    "edit": {
+      "title_edit": "교환 코드 업데이트",
+      "title_create": "새 교환 코드 생성",
+      "name": "이름",
+      "name_placeholder": "이름을 입력하세요",
+      "quota": "잔액",
+      "quota_placeholder": "교환 코드당 잔액을 입력하세요",
+      "count": "생성 수",
+      "count_placeholder": "생성할 코드의 수를 입력하세요",
+      "buttons": {
+        "submit": "제출",
+        "cancel": "취소"
+      }
+    },
+    "messages": {
+      "update_success": "교환 코드가 성공적으로 업데이트되었습니다!",
+      "create_success": "교환 코드가 성공적으로 생성되었습니다!"
+    }
+  },
+  "log": {
+    "title": "작업 로그",
+    "search": "로그 검색...",
+    "usage_details": "사용 상세",
+    "total_quota": "총 사용량",
+    "click_to_view": "클릭하여 보기",
+    "type": {
+      "select": "로그 유형 선택",
+      "all": "전체",
+      "topup": "충전",
+      "usage": "사용",
+      "admin": "관리",
+      "system": "시스템",
+      "test": "테스트",
+      "unknown": "알 수 없음"
+    },
+    "messages": {
+      "copy_request_id_success": "요청 ID 복사됨: {{request_id}}",
+      "copy_request_id_failed": "요청 ID 복사 실패: {{request_id}}"
+    },
+    "table": {
+      "time": "시간",
+      "channel": "채널",
+      "type": "유형",
+      "model": "모델",
+      "username": "사용자명",
+      "token_name": "토큰 이름",
+      "token_name_placeholder": "선택 사항",
+      "model_name": "모델 이름",
+      "model_name_placeholder": "선택 사항",
+      "start_time": "시작 시간",
+      "end_time": "종료 시간",
+      "channel_id": "채널 ID",
+      "channel_id_placeholder": "선택 사항",
+      "username_placeholder": "선택 사항",
+      "prompt_tokens": "프롬프트 토큰",
+      "completion_tokens": "완료 토큰",
+      "quota": "잔액",
+      "detail": "상세"
+    },
+    "buttons": {
+      "query": "작업",
+      "submit": "검색",
+      "refresh": "새로고침"
+    }
+  },
+  "user": {
+    "title": "사용자 관리",
+    "edit": {
+      "title": "사용자 정보 업데이트",
+      "username": "사용자명",
+      "username_placeholder": "새 사용자명을 입력하세요",
+      "password": "비밀번호",
+      "password_placeholder": "새 비밀번호를 입력하세요. 최소 8자",
+      "display_name": "표시 이름",
+      "display_name_placeholder": "새 표시 이름을 입력하세요",
+      "group": "그룹",
+      "group_placeholder": "그룹을 선택하세요",
+      "group_addition": "시스템 설정에서 그룹 배수를 편집하여 새 그룹을 추가하세요:",
+      "quota": "남은 잔액",
+      "quota_placeholder": "새로운 남은 잔액을 입력하세요",
+      "github_id": "연결된 GitHub 계정",
+      "github_id_placeholder": "읽기 전용입니다. 사용자가 개인 설정 페이지에서 연결해야 하며 직접 수정할 수 없습니다",
+      "wechat_id": "연결된 WeChat 계정",
+      "wechat_id_placeholder": "읽기 전용입니다. 사용자가 개인 설정 페이지에서 연결해야 하며 직접 수정할 수 없습니다",
+      "email": "연결된 이메일 계정",
+      "email_placeholder": "읽기 전용입니다. 사용자가 개인 설정 페이지에서 연결해야 하며 직접 수정할 수 없습니다",
+      "buttons": {
+        "submit": "제출",
+        "cancel": "취소"
+      }
+    },
+    "add": {
+      "title": "새 사용자 계정 생성"
+    },
+    "messages": {
+      "update_success": "사용자 정보가 성공적으로 업데이트되었습니다!",
+      "create_success": "사용자 계정이 성공적으로 생성되었습니다!",
+      "operation_success": "작업이 완료되었습니다!"
+    },
+    "search": "사용자 검색...",
+    "table": {
+      "id": "ID",
+      "username": "사용자명",
+      "group": "그룹",
+      "quota": "잔액",
+      "role_text": "역할",
+      "status_text": "상태",
+      "actions": "작업",
+      "remaining_quota": "남은 잔액",
+      "used_quota": "사용된 잔액",
+      "request_count": "요청 수",
+      "role_types": {
+        "normal": "일반 사용자",
+        "admin": "관리자",
+        "super_admin": "슈퍼 관리자",
+        "unknown": "알 수 없는 역할"
+      },
+      "status_types": {
+        "activated": "활성화됨",
+        "banned": "차단됨",
+        "unknown": "알 수 없는 상태"
+      },
+      "sort": {
+        "default": "기본 순서",
+        "by_quota": "남은 잔액으로 정렬",
+        "by_used_quota": "사용된 잔액으로 정렬",
+        "by_request_count": "요청 수로 정렬"
+      },
+      "sort_by": "정렬 기준"
+    },
+    "buttons": {
+      "add": "새 사용자 추가",
+      "delete": "삭제",
+      "delete_user": "사용자 삭제",
+      "enable": "활성화",
+      "disable": "비활성화",
+      "edit": "편집",
+      "promote": "승격",
+      "demote": "강등"
+    }
+  },
+  "dashboard": {
+    "charts": {
+      "requests": {
+        "title": "모델 요청 추이",
+        "tooltip": "요청 수"
+      },
+      "quota": {
+        "title": "잔액 사용 추이",
+        "tooltip": "사용된 잔액"
+      },
+      "tokens": {
+        "title": "토큰 사용 추이",
+        "tooltip": "토큰 수"
+      }
+    },
+    "statistics": {
+      "title": "통계",
+      "tooltip": {
+        "date": "날짜",
+        "value": "값"
+      }
+    }
+  },
+  "setting": {
+    "title": "시스템 설정",
+    "tabs": {
+      "personal": "개인 설정",
+      "operation": "운영 설정",
+      "system": "시스템 설정",
+      "other": "기타 설정"
+    },
+    "personal": {
+      "general": {
+        "title": "일반 설정",
+        "system_token_notice": "참고: 여기서 생성된 토큰은 시스템 관리용이며 OpenAI 관련 서비스 요청용이 아닙니다.",
+        "buttons": {
+          "update_profile": "프로필 업데이트",
+          "generate_token": "시스템 토큰 생성",
+          "copy_invite": "초대 링크 복사",
+          "delete_account": "계정 삭제"
+        }
+      },
+      "binding": {
+        "title": "계정 연결",
+        "buttons": {
+          "bind_wechat": "WeChat 계정 연결",
+          "bind_github": "GitHub 계정 연결",
+          "bind_email": "이메일 주소 연결",
+          "bind_lark": "Lark 계정 연결"
+        },
+        "wechat": {
+          "title": "WeChat 연결",
+          "description": "QR 코드를 스캔하여 공식 계정을 팔로우하고 '인증 코드'를 입력하여 코드를 얻으세요 (3분 유효)",
+          "verification_code": "인증 코드",
+          "bind": "연결"
+        },
+        "email": {
+          "title": "이메일 주소 연결",
+          "email_placeholder": "이메일 주소 입력",
+          "code_placeholder": "인증 코드",
+          "get_code": "코드 받기",
+          "get_code_retry": "재전송({{countdown}})",
+          "bind": "연결 확인",
+          "cancel": "취소"
+        }
+      },
+      "delete_account": {
+        "title": "위험한 작업",
+        "warning": "계정을 삭제하고 있습니다. 모든 데이터가 삭제되며 복구할 수 없습니다",
+        "confirm_placeholder": "삭제를 확인하기 위해 사용자명 {{username}}을(를) 입력하세요",
+        "buttons": {
+          "confirm": "삭제 확인",
+          "cancel": "취소"
+        }
+      }
+    },
+    "system": {
+      "general": {
+        "title": "일반 설정",
+        "server_address": "서버 주소",
+        "server_address_placeholder": "예: https://yourdomain.com",
+        "buttons": {
+          "update": "서버 주소 업데이트"
+        }
+      },
+      "login": {
+        "title": "로그인 및 회원가입 설정",
+        "password_login": "비밀번호 로그인 허용",
+        "password_register": "비밀번호 회원가입 허용",
+        "email_verification": "비밀번호 회원가입에 이메일 인증 필수",
+        "github_oauth": "GitHub OAuth 로그인 및 회원가입 허용",
+        "wechat_login": "WeChat 로그인 및 회원가입 허용",
+        "registration": "새 사용자 회원가입 허용 (비활성화되면 모든 방법으로 회원가입 불가)",
+        "turnstile": "Turnstile 사용자 인증 활성화"
+      },
+      "email_restriction": {
+        "title": "이메일 도메인 화이트리스트",
+        "subtitle": "악의적인 사용자의 임시 이메일 대량 가입을 방지하기 위해 사용",
+        "enable": "이메일 도메인 화이트리스트 활성화",
+        "allowed_domains": "허용된 이메일 도메인",
+        "add_domain": "허용된 새 이메일 도메인 추가",
+        "add_domain_placeholder": "허용된 새 이메일 도메인 입력",
+        "buttons": {
+          "fill": "채우기",
+          "save": "이메일 도메인 화이트리스트 설정 저장"
+        }
+      },
+      "smtp": {
+        "title": "SMTP 설정",
+        "subtitle": "시스템 이메일 발송을 지원하기 위해 사용",
+        "server": "SMTP 서버 주소",
+        "server_placeholder": "예: smtp.gmail.com",
+        "port": "SMTP 포트",
+        "port_placeholder": "기본값: 587",
+        "account": "SMTP 계정",
+        "account_placeholder": "보통 이메일 주소",
+        "from": "SMTP 발신 이메일",
+        "from_placeholder": "보통 이메일 주소와 동일",
+        "token": "SMTP 액세스 토큰",
+        "token_placeholder": "민감한 정보는 프론트엔드로 전송되지 않습니다",
+        "buttons": {
+          "save": "SMTP 설정 저장"
+        }
+      },
+      "github": {
+        "title": "GitHub OAuth 앱 설정",
+        "subtitle": "GitHub 로그인 및 회원가입을 지원하기 위해 사용",
+        "manage_link": "여기를 클릭하여",
+        "manage_text": "GitHub OAuth 앱을 관리하세요",
+        "url_notice": "홈페이지 URL을 {{server_url}}로 설정하고 권한 부여 콜백 URL을 {{callback_url}}로 설정하세요",
+        "client_id": "GitHub 클라이언트 ID",
+        "client_id_placeholder": "등록된 GitHub OAuth APP ID 입력",
+        "client_secret": "GitHub 클라이언트 비밀",
+        "client_secret_placeholder": "민감한 정보는 프론트엔드로 전송되지 않습니다",
+        "buttons": {
+          "save": "GitHub OAuth 설정 저장"
+        }
+      },
+      "lark": {
+        "title": "Lark OAuth 설정",
+        "subtitle": "Lark 로그인 및 회원가입을 지원하기 위해 사용",
+        "manage_link": "여기를 클릭하여",
+        "manage_text": "Lark 애플리케이션을 관리하세요",
+        "url_notice": "홈페이지 URL을 {{server_url}}로 설정하고 리디렉션 URL을 {{callback_url}}로 설정하세요",
+        "client_id": "앱 ID",
+        "client_id_placeholder": "앱 ID 입력",
+        "client_secret": "앱 비밀",
+        "client_secret_placeholder": "민감한 정보는 프론트엔드로 전송되지 않습니다",
+        "buttons": {
+          "save": "Lark OAuth 설정 저장"
+        }
+      },
+      "wechat": {
+        "title": "WeChat 서버 설정",
+        "subtitle": "WeChat 로그인 및 회원가입을 지원하기 위해 사용",
+        "learn_more": "WeChat 서버에 대해 알아보기",
+        "server_address": "WeChat 서버 주소",
+        "server_address_placeholder": "예: https://yourdomain.com",
+        "token": "WeChat 서버 액세스 토큰",
+        "token_placeholder": "민감한 정보는 프론트엔드로 전송되지 않습니다",
+        "qrcode": "WeChat 공식 계정 QR 코드 이미지 URL",
+        "qrcode_placeholder": "이미지 URL 입력",
+        "buttons": {
+          "save": "WeChat 서버 설정 저장"
+        },
+        "scan_tip": "QR 코드를 스캔하여 WeChat 공식 계정을 팔로우하고 '코드'를 입력하여 인증 코드를 얻으세요 (3분 유효)",
+        "code_placeholder": "인증 코드"
+      },
+      "turnstile": {
+        "title": "Turnstile 설정",
+        "subtitle": "사용자 인증을 지원하기 위해 사용",
+        "manage_link": "여기를 클릭하여",
+        "manage_text": "Turnstile 사이트를 관리하세요. 보이지 않는 위젯 유형을 권장합니다",
+        "site_key": "Turnstile 사이트 키",
+        "site_key_placeholder": "등록된 Turnstile 사이트 키 입력",
+        "secret_key": "Turnstile 비밀 키",
+        "secret_key_placeholder": "민감한 정보는 프론트엔드로 전송되지 않습니다",
+        "buttons": {
+          "save": "Turnstile 설정 저장"
+        }
+      },
+      "password_login": {
+        "warning": {
+          "title": "경고",
+          "content": "비밀번호 로그인을 비활성화하면 다른 로그인 방법을 연결하지 않은 모든 사용자(관리자 포함)가 비밀번호로 로그인할 수 없습니다. 비활성화하시겠습니까?",
+          "buttons": {
+            "confirm": "확인",
+            "cancel": "취소"
+          }
+        }
+      }
+    },
+    "operation": {
+      "quota": {
+        "title": "잔액 설정",
+        "new_user": "새 사용자의 초기 잔액",
+        "new_user_placeholder": "예: 100",
+        "pre_consume": "요청당 사전 소비 잔액",
+        "pre_consume_placeholder": "요청 후 차이를 환불 또는 청구",
+        "inviter_reward": "초대인에게 보상 잔액",
+        "inviter_reward_placeholder": "예: 2000",
+        "invitee_reward": "초대 코드 사용 시 보상 잔액",
+        "invitee_reward_placeholder": "예: 1000",
+        "buttons": {
+          "save": "잔액 설정 저장"
+        }
+      },
+      "ratio": {
+        "title": "비율 설정",
+        "model": {
+          "title": "모델 비율",
+          "placeholder": "키가 모델 이름이고 값이 비율인 JSON 텍스트"
+        },
+        "completion": {
+          "title": "완료 비율",
+          "placeholder": "키가 모델 이름이고 값이 비율인 JSON 텍스트입니다. 이 비율은 완료와 프롬프트의 비율이며 One API의 내부 비율을 무시할 수 있습니다"
+        },
+        "group": {
+          "title": "그룹 비율",
+          "placeholder": "키가 그룹 이름이고 값이 비율인 JSON 텍스트"
+        },
+        "buttons": {
+          "save": "비율 설정 저장"
+        }
+      },
+      "log": {
+        "title": "로그 설정",
+        "enable_consume": "잔액 소비 로깅 활성화",
+        "target_time": "대상 시간",
+        "buttons": {
+          "clean": "과거 로그 정리"
+        }
+      },
+      "monitor": {
+        "title": "모니터 설정",
+        "max_response_time": "최대 응답 시간",
+        "max_response_time_placeholder": "초 단위입니다. 테스트 중 이 시간을 초과하는 채널은 자동으로 비활성화됩니다",
+        "quota_reminder": "잔액 상기 임계값",
+        "quota_reminder_placeholder": "잔액이 이 값 이하로 떨어지면 사용자가 이메일 알림을 받습니다",
+        "auto_disable": "실패 시 채널 자동 비활성화",
+        "auto_enable": "성공 시 채널 자동 활성화",
+        "buttons": {
+          "save": "모니터 설정 저장"
+        }
+      },
+      "general": {
+        "title": "일반 설정",
+        "topup_link": "충전 링크",
+        "topup_link_placeholder": "예: 카드 판매 웹사이트 구매 링크",
+        "chat_link": "채팅 페이지 링크",
+        "chat_link_placeholder": "예: ChatGPT Next Web 배포 주소",
+        "quota_per_unit": "통화 단위당 잔액",
+        "quota_per_unit_placeholder": "통화 단위당 교환 가능한 잔액",
+        "retry_times": "실패 시 재시도 횟수",
+        "retry_times_placeholder": "실패 시 재시도 횟수",
+        "display_in_currency": "잔액을 통화 형식으로 표시",
+        "display_token_stat": "청구 API에서 사용자 잔액 대신 토큰 잔액 표시",
+        "approximate_token": "대략적인 방법을 사용하여 토큰 수 추정",
+        "buttons": {
+          "save": "일반 설정 저장"
+        }
+      }
+    },
+    "other": {
+      "notice": {
+        "title": "공지 설정",
+        "content": "공지 내용",
+        "content_placeholder": "새로운 공지 내용을 입력하세요. Markdown 및 HTML 코드 지원",
+        "buttons": {
+          "save": "공지 저장"
+        }
+      },
+      "system": {
+        "title": "시스템 설정",
+        "name": "시스템 이름",
+        "name_placeholder": "시스템 이름을 입력하세요",
+        "logo": "로고 이미지 URL",
+        "logo_placeholder": "로고 이미지 URL을 입력하세요",
+        "theme": {
+          "title": "테마 이름",
+          "link": "사용 가능한 테마",
+          "placeholder": "테마 이름을 입력하세요"
+        },
+        "buttons": {
+          "save_name": "시스템 이름 설정",
+          "save_logo": "로고 설정",
+          "save_theme": "테마 설정 (재시작 필요)"
+        }
+      },
+      "content": {
+        "title": "콘텐츠 설정",
+        "homepage": {
+          "title": "홈페이지 콘텐츠",
+          "placeholder": "홈페이지 콘텐츠를 입력하세요. Markdown 및 HTML 코드 지원합니다. 설정 후에는 상태 정보가 표시되지 않습니다. 링크를 입력하면 iframe의 src 속성으로 사용되어 모든 웹페이지를 홈페이지로 설정할 수 있습니다."
+        },
+        "about": {
+          "title": "시스템 정보",
+          "description": "설정 페이지에서 정보 내용을 설정할 수 있습니다. HTML 및 Markdown 지원",
+          "repository": "프로젝트 저장소:",
+          "loading_failed": "정보 내용 로드 실패..."
+        },
+        "footer": {
+          "title": "바닥글",
+          "placeholder": "새 바닥글을 입력하세요. 비워두면 기본 바닥글을 사용합니다. HTML 코드 지원"
+        },
+        "buttons": {
+          "save_homepage": "홈페이지 콘텐츠 저장",
+          "save_about": "정보 저장",
+          "save_footer": "바닥글 설정"
+        }
+      },
+      "copyright": {
+        "notice": "One API의 저작권 표시를 제거하려면 권한이 필요합니다. 프로젝트 유지 관리에는 상당한 노력이 필요하며, 이 프로젝트가 의미 있다면 적극적으로 지원해주세요."
+      }
+    }
+  },
+  "footer": {
+    "built_by": "제작:",
+    "built_by_name": "JustSong",
+    "license": ", 소스 코드는",
+    "mit": "MIT 라이선스"
+  },
+  "home": {
+    "welcome": {
+      "title": "One API에 오신 것을 환영합니다",
+      "description": "One API는 LLM API 관리 및 배포 시스템으로 다양한 공급자의 LLM API를 더 잘 관리하고 사용하도록 도와줍니다.",
+      "login_notice": "서비스를 사용하려면 먼저 로그인 또는 회원가입하세요."
+    },
+    "system_status": {
+      "title": "시스템 상태",
+      "info": {
+        "title": "시스템 정보",
+        "name": "이름: ",
+        "version": "버전: ",
+        "source": "소스: ",
+        "source_link": "GitHub 저장소",
+        "start_time": "시작 시간: "
+      },
+      "config": {
+        "title": "시스템 설정",
+        "email_verify": "이메일 인증: ",
+        "github_oauth": "GitHub OAuth: ",
+        "wechat_login": "WeChat 로그인: ",
+        "turnstile": "Turnstile 확인: ",
+        "enabled": "활성화됨",
+        "disabled": "비활성화됨"
+      }
+    },
+    "loading_failed": "홈페이지 콘텐츠 로드 실패..."
+  },
+  "auth": {
+    "login": {
+      "title": "사용자 로그인",
+      "username": "사용자명 / 이메일",
+      "password": "비밀번호",
+      "button": "로그인",
+      "forgot_password": "비밀번호를 잊으셨나요?",
+      "reset_password": "재설정",
+      "no_account": "계정이 없으신가요?",
+      "register": "회원가입",
+      "other_methods": "다른 로그인 방법",
+      "wechat": {
+        "scan_tip": "QR 코드를 스캔하여 WeChat 공식 계정을 팔로우하고 '코드'를 입력하여 인증 코드를 얻으세요 (3분 유효)",
+        "code_placeholder": "인증 코드"
+      }
+    },
+    "register": {
+      "title": "새 사용자 회원가입",
+      "username": "사용자명 (최대 12자)",
+      "password": "비밀번호 (8-20자)",
+      "confirm_password": "비밀번호 확인",
+      "email": "이메일 주소",
+      "verification_code": "인증 코드",
+      "get_code": "코드 받기",
+      "get_code_retry": "재시도 ({{countdown}})",
+      "button": "회원가입",
+      "has_account": "계정이 있으신가요?",
+      "login": "로그인"
+    },
+    "reset": {
+      "title": "비밀번호 재설정",
+      "email": "이메일 주소",
+      "button": "제출",
+      "notice": "시스템이 재설정 링크가 포함된 이메일을 메일함에 보냅니다. 이메일을 확인하세요.",
+      "confirm": {
+        "title": "비밀번호 재설정 확인",
+        "new_password": "새 비밀번호",
+        "button": "제출",
+        "button_disabled": "비밀번호 재설정 완료",
+        "notice": "새 비밀번호가 생성되었습니다. 위의 비밀번호 필드 또는 버튼을 클릭하여 복사하세요. 가능한 한 빨리 로그인하여 비밀번호를 변경하세요!"
+      }
+    }
+  },
+  "about": {
+    "title": "정보",
+    "description": "One API는 오픈소스 API 관리 및 프록시 플랫폼입니다.",
+    "repository": "저장소: ",
+    "loading_failed": "로드 실패"
+  },
+  "messages": {
+    "success": {
+      "login": "로그인 성공!",
+      "register": "회원가입 성공!",
+      "verification_code": "인증 코드가 발송되었습니다. 이메일을 확인하세요!",
+      "password_reset": "재설정 이메일이 발송되었습니다. 받은편지함을 확인하세요!"
+    },
+    "error": {
+      "login_expired": "로그인하지 않았거나 세션이 만료되었습니다. 다시 로그인하세요!",
+      "password_length": "비밀번호는 최소 8자 이상이어야 합니다!",
+      "password_mismatch": "비밀번호가 일치하지 않습니다",
+      "turnstile_wait": "잠시만 기다려주세요. Turnstile이 환경을 확인하고 있습니다!",
+      "root_password": "즉시 기본 비밀번호를 변경하세요!"
+    },
+    "notice": {
+      "password_copied": "새 비밀번호가 클립보드에 복사되었습니다: {{password}}"
+    }
+  }
+}
