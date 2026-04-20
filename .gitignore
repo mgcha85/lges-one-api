@@ -15,4 +15,3 @@ temp
 .DS_Store.env.prod
 .env.dev
 offline_deploy/
-offline_deploy.zip
