@@ -109,10 +109,10 @@ const LoginForm = () => {
               <Header
                 as='h2'
                 textAlign='center'
-                style={{ marginBottom: '1.5em' }}
+                style={{ marginBottom: '1.5em', color: 'var(--grey-900)' }}
               >
                 <Image src={logo} style={{ marginBottom: '10px' }} />
-                <Header.Content>{t('auth.login.title')}</Header.Content>
+                <Header.Content style={{ letterSpacing: '-0.5px' }}>{t('auth.login.title')}</Header.Content>
               </Header>
             </Card.Header>
             <Form size='large'>
@@ -141,9 +141,10 @@ const LoginForm = () => {
                 fluid
                 size='large'
                 style={{
-                  background: '#2F73FF', // 使用更现代的蓝色
+                  background: 'var(--primary-high)',
                   color: 'white',
                   marginBottom: '1.5em',
+                  borderRadius: '4px'
                 }}
                 onClick={handleSubmit}
               >
@@ -165,7 +166,7 @@ const LoginForm = () => {
                   {t('auth.login.forgot_password')}
                   <Link
                     to='/reset'
-                    style={{ color: '#2185d0', marginLeft: '2px' }}
+                    style={{ color: 'var(--primary-color)', marginLeft: '2px' }}
                   >
                     {t('auth.login.reset_password')}
                   </Link>
@@ -174,7 +175,7 @@ const LoginForm = () => {
                   {t('auth.login.no_account')}
                   <Link
                     to='/register'
-                    style={{ color: '#2185d0', marginLeft: '2px' }}
+                    style={{ color: 'var(--primary-color)', marginLeft: '2px' }}
                   >
                     {t('auth.login.register')}
                   </Link>
