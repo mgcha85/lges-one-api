@@ -15,18 +15,9 @@ const Footer = () => {
           <div className="custom-footer" dangerouslySetInnerHTML={{ __html: siteInfo.footer_html }}></div>
         ) : (
           <>
-            <Link href="https://github.com/songquanpeng/one-api" target="_blank">
-              {siteInfo.system_name} {process.env.REACT_APP_VERSION}{' '}
-            </Link>
-            由{' '}
-            <Link href="https://github.com/songquanpeng" target="_blank">
-              JustSong
-            </Link>{' '}
-            构建，主题 berry 来自{' '}
-            <Link href="https://github.com/MartialBE" target="_blank">
-              MartialBE
-            </Link>{' '}，源代码遵循
-            <Link href="https://opensource.org/licenses/mit-license.php"> MIT 协议</Link>
+            <Box sx={{ color: 'grey.500', fontSize: '12px' }}>
+              © {new Date().getFullYear()} {siteInfo.system_name}. All rights reserved.
+            </Box>
           </>
         )}
       </Box>
